@@ -43,25 +43,22 @@ st.markdown('<p class="description">Based on Autoscout Model</p>', unsafe_allow_
 
 
 
-
-
-
-
-
 # Add select box
 occupation=st.selectbox("Your Occupation", ["Programmer", "DataScientist", "Doctor"])
 st.write("Your Occupation is ", occupation)
 
 # Multi_select
-multi_select = st.multiselect("Select multiple numbers",[1,2,3,4,5])
+multi_select = st.multiselect("Horsepower kW",[1,2,3,4,5])
 st.write(f"You selected {len(multi_select)} number(s)")
 st.write("Your selection is/are", multi_select)
 for i in range(len(multi_select)):
     st.write(f"Your {i+1}. selection is {multi_select[i]}")
 
 # Slider
-option1 = st.slider("Select a number", min_value=5, max_value=70, value=30, step=5)
-option2 = st.slider("Select a number", min_value=0.2, max_value=30.2, value=5.2, step=0.2)
+option1 = st.slider("Horsepower kW", min_value=300, max_value=5000, value=300, step=5)
+option2 = st.number_input("Gears", min_value=5, max_value=7)
+option3 = st.number_input("Age", min_value=5, max_value=7)
+
 
 # result=option1*option2
 # st.write("multiplication of two options is:",result)
