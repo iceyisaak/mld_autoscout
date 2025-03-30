@@ -113,23 +113,6 @@ with col2:
 
 
 
-# col1, col2 = st.columns(2)      
-
-# with col1:
-#     body_type = st.selectbox("body_type", df.body_type.unique().tolist())
-#     Gearing_Type = st.selectbox("Transmission", df.Gearing_Type.unique().tolist())
-
-
-# with col2:
-#     Drive_chain = st.selectbox("Drive_chain", df.Drive_chain.unique().tolist())
-#     Fuel = st.selectbox("Fuel", df.Fuel.unique().tolist())
-
-    
-
-
-
-
-
 st.subheader("Overview of Sample Data")
 # Data Overview
 st.table(df.head())
