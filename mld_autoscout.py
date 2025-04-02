@@ -148,6 +148,5 @@ input_data = pd.DataFrame({
 predict = st.button("Predict")
 result = model.predict(input_data)
 if predict :
-    # st.success(result[0])
     st.success(f"Predicted Price: ${result[0]:.2f}")
     
