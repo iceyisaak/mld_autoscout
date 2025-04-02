@@ -6,8 +6,7 @@ import pandas as pd
 import numpy as np
 from PIL import Image  # to deal with images (PIL: Python imaging library)
 import pickle
-
-
+import os 
 
 # Title/Text
 st.set_page_config(
@@ -34,15 +33,22 @@ def load_data():
         df = pd.DataFrame(data)
         return df
 
-# To load machine learning model
-# filename = "mld-autoscout-model.pkl"
-# model=pickle.load(open(filename, "rb"))
 
-# Load or create model function
-# @st.cache_resource
+# Load model function with proper caching and error handling
+@st.cache_resource
 def load_model():
-    model = pickle.load(open("mld-autoscout-model.pkl", "rb"))
-    return model
+    model_path = "mld-autoscout-model.pkl"
+    try:
+        if not os.path.exists(model_path):
+            st.error(f"Model file not found: {model_path}")
+            return None
+        
+        with open(model_path, "rb") as f:
+            model = pickle.load(f)
+        return model
+    except Exception as e:
+        st.error(f"Error loading model: {str(e)}")
+        return None
 
 
 df = load_data()
@@ -142,4 +148,6 @@ input_data = pd.DataFrame({
 predict = st.button("Predict")
 result = model.predict(input_data)
 if predict :
-    st.success(result[0])
+    # st.success(result[0])
+    st.success(f"Predicted Price: ${result[0]:.2f}")
+    
